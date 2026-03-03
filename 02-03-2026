@@ -1,0 +1,51 @@
+Variáveis:
+Primitivas:
+// Essas variáveis são declarativas, declaramos 
+int valor = 1;
+double numero = 2.5;
+bool ativo = true;
+String nome = "Hélio";
+Object objeto; // Todas as variáveis herdam do tipo object
+
+//também temos por inferência 
+var idade; //após definirmos
+
+temos coleção também 
+List<Tipo> = ["valor1", "valor2"] // colcoamos o tipo da nossa lista + os valores
+Set<String> numeros = {"1", "2", "3"}; // não permite valores repetidos 
+
+
+
+
+Dynamic:
+Quando colocamos
+dynamic em uma variável, podemos alterar o tipo da variável, desligando o static dela
+dynamic valor = "string";
+valor = 10;
+desliga a validação no momento da compilação, então se executar algo de string numa variável que está como int, vai dar erro em tempo de execução
+
+Final:
+final String name = "abacaxi"; // Não é mais mutável, esse valor será fixo
+final String nome; // Se deixamos assim, podemos atribuir uma vez em tempo de execução
+
+final List<int> lista = [1,2,3,4]
+lista = [1,2,4] // Imutável não pode fazer isso
+lista.add(4); // podemos adicionar 
+o final se assegura que o ponteiro que esta apontando para esse espaço na memoria seja o mesmo
+
+já usando const por exemplo, garantimos que essa lista é imutável, sempre assumindo o valor
+class Banco{
+static const taxa = 0.15; // no caso da const dentro de uma classe, ele não pertece ao objeto instanciado, pertence a classe em si, 
+}
+
+caso colocamos o const no construtor da classe, ao instanciar dois objetos com os mesmos atributos ele aceita como true, pq além de comparar o espaço na memoria, pega os valores
+ao definir algumas partes imultaveis no flutter, poderíamos settar como final, para ocupar menos espaço de memoria
+
+Parâmetros posicionais, opcionais e nomeados
+
+parâmetros: São variáveis declaradas na assinatura da função, ou seja, variáveis que serão utilizadas dentro do escopo da função 
+Parâmetros posicionais // são definidos pela posição na assinatura do método / função
+
+parâmetros opcionais: podem ou não ser passados nas chamadas das funções
+
+Parâmetros nomeados na chamada da função quando exemplo, nome: "nome" <-- definimos que esse parâmetro vai receber esse valor
