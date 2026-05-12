@@ -1,0 +1,288 @@
+Brayan Mateus & João Lucas Pinheiro & Giovana Lopes
+1 -#-#-#-#-#-#-#-#-#-#-#-#-#-#
+Previsto:
+1- Início
+2- Desenhando estrutura da página
+3- Desenhando campos
+4- Desenhando logo
+5- Buscando email do usuário
+6- Buscando dados do usuário
+7- Espera de 2 segundos
+8- Dados do usuário carregados
+9- espera de 4 segundos
+10- Email do usuário carregado
+11- Apresentando dados na tela
+12- Fim
+
+
+
+
+Início
+Desenhando estrutura da página
+Desenhando campos
+Desenhando logo
+Buscando email do usuário
+Buscando dados do usuário
+Dados do usuário carregados
+Email do usuário carregado
+Apresentando dados na tela
+Fim
+
+
+Saiu como esperávamos pois a chamada foi síncrona, ou seja, o sleep espera o tempo para continuar executando o código
+
+2 -#-#-#-#-#-#-#-#-#-#-#-#-#-#
+Previsto:
+1- Início
+2- Desenhando estrutura da página
+3- Desenhando campos
+4- Desenhando logo
+5- Buscando email do usuário
+6- Buscando dados do usuário
+7- Espera de 2 segundos
+8- Dados do usuário carregados
+9- espera de 4 segundos
+10- Email do usuário carregado
+11- Apresentando dados na tela
+12- Fim
+
+
+
+
+Início
+Desenhando estrutura da página
+Desenhando campos
+Desenhando logo
+Buscando email do usuário
+Buscando dados do usuário
+Dados do usuário carregados
+Email do usuário carregado
+Apresentando dados na tela
+Fim
+
+
+Ele fica exatamente igual pois como adicionamos os pilares da programação assíncrona, mantemos o mesmo resultado
+Future -> Diz que o retorno daquela classe vai ser assíncrono
+async -> Define que a função é assíncrona
+await -> Garante que a execução será pausada até que seja finalizado a função
+
+
+3 -#-#-#-#-#-#-#-#-#-#-#-#-#-#
+Previsto:
+1- Início
+2- Desenhando estrutura da página
+3- Desenhando campos
+4- Desenhando logo
+5- Buscando email do usuário
+6- Buscando dados do usuário
+7- Apresentando dados na tela
+8- Fim
+9-Dados do usuario carregados
+10-Email do usuario carregado: usuario@email.com
+
+
+
+Inicio
+Desenhando estrutura da pagina
+Desenhando campos
+Desenhando logo
+Buscando email do usuario
+Buscando dados do usuario
+Apresentando dados na tela
+Fim
+Dados do usuario carregados
+Email do usuário carregado: usuario@email.com
+
+Isso acontece pelo fato de mesmo termos o Future e async se nas chamadas não colocarmos o await, essa espera não será respeitada 
+4-  -#-#-#-#-#-#-#-#-#-#-#-#-#-#
+
+Previsto
+1- Inicio
+2- Buscando email do usuario
+3- Buscando dados do usuario
+4- Desenhando estrutura da pagina
+5- Desenhando campos
+6- Desenhando logo
+7- Dados do usuario carregados
+8- Email do usuario carregado
+9- Apresentando dados na tela: usuario@email.com
+10- Fim
+
+Inicio
+Buscando email do usuario
+Buscando dados do usuario
+Desenhando estrutura da pagina
+Desenhando campos
+Desenhando logo
+Dados do usuario carregados
+Email do usuario carregado
+Apresentando dados na tela: usuario@email.com
+Fim
+
+Nesse caso temos 2 abordagens que auxiliam, a primeira é: 
+  Future<String> emailFuturo = buscarEmailUsuario();
+ele coloca a operação mais demorada em primeiro, para ir buscando enquanto roda o restante do projeto
+Já a segunda:
+String email = await emailFuturo;
+Nesse caso o dado só é carregado quando é necessário evitando gargalos desnecessários
+
+Atividade avaliativa
+2 CRUD simples
+2 CRUD associação
+Entregar 25/05 CR-moodle MOR
+01/06 vídeo classe conexão
+
+
+5-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+
+
+Previsto:
+1- Inicio
+2- Buscando email do usuario
+3- Buscando dados do usuario
+4- Dados do usuario carregados
+5- Email do usuario carregado
+6- Email final: Instance of 'Future<String>'@email.com
+7- Fim
+
+Inicio
+Buscando email do usuario
+Buscando dados do usuario
+Dados do usuario carregados
+Email do usuario carregado
+Email final: Instance of 'Future<String>'@email.com
+Fim
+
+Já aqui temos 2 problemas, o primeiro é que em
+  var usuario = buscarDadosUsuario(); não temos o await, ou seja, essa variavel era para ser do tipo Future<String> não String
+e como foi usado var, escondeu que o usuario virou String, resultando no resultado  Instance of 'Future<String>'@email.com
+
+6-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+
+Previsto
+1- Inicio
+2- Buscando email do usuario
+3- Buscando dados do usuario
+4- Desenhando estrutura da pagina
+5- Desenhando campos
+6- Desenhando logo
+7- Dados do usuario carregados
+8- Email do usuario carregado
+9- Apresentando dados na tela: usuario@email.com
+10- Fim
+
+Inicio
+Buscando email do usuario
+Buscando dados do usuario
+Desenhando estrutura da pagina
+Desenhando campos
+Desenhando logo
+Dados do usuario carregados
+Email do usuario carregado
+Apresentando dados na tela: usuario@email.com
+Fim
+
+Desta forma conseguimos corrigir o projeto, com boas práticas, como não utilizar o var sem um motivo, também não esquecer o await quando precisamos daquele resultado para seguir tratar erros com try/catch, para que o código não quebre e tenha melhor legibilidade 
+
+
+Persistência local, remota e sincronização
+Local: Quando armazenamos diretamente no dispositivo, o próprio dispositivo que controla as tabelas
+Uma desvantagem desse modelo é que caso eu atualize o banco de dados com uma nova tabela / coluna, é necessário que o meu usuário baixe a atualização que contém essa troca.
+
+Remoto: Dados ficam diretamente no servidor, onde é comunicado via API o responsável(normalmente DBA) que cuida da inserção de novas tabelas, uma vantagem é a segurança, porém sempre precisa de uma conexão com a internet 
+
+Sincronização: Modelo híbrido onde os dados ficam armazenados localmente e em determinados momentos, como quando há sinal de internet, esses dados são sincronizados, seja enviar para o servidor, ou como trazer para o remoto, o problema é de fato a sincronização, ela é mais difícil para implementar e pode dar mais problemas 
+
+
+
+Persistência - o que precisa?
+Para persistirmos um dado, independentemente de onde seja, precisamos de uma conexão com o banco de dados, onde definimos onde está o  banco de dados, como abrir, qual versão etc….
+Para acessarmos o banco podemos utilizar bibliotecas, como em flutter com a sqflite, ela atua como uma ponte para o banco
+SQL: a linguagem usada no banco, podemos separar em:
+DDL:Data Definition Language. para definir a estrutura do banco
+DML:Data Manipulation Language. Para manipular dados
+
+model: representa a entidade no nosso sistema 
+DAO: Data Access Object. É uma classe que serve para organizar o acesso ao banco de dados, normalmente guarda o SQL de uma entidade
+Repository: também organiza acesso a dados, porém nele podemos decidir de onde vem os dados, de uma API, Banco, Cache
+
+
+
+
+
+
+
+
+
+Telas e fluxo para persistência: 
+
+Para ter uma persistência é necessário :
+Conexão -> biblioteca, 
+models, 
+DAO -> SQL 
+e as telas que enviam e recebem os dados.
+
+Tudo isso para que seja entendido o fluxo necessário para cadastrar, listar, detalhar, alterar e excluir os dados.. 
+
+Para garantir o fluxo correto, geralmente é utilizado uma tela de Lista, que atua como porta de entrada executando um SELECT no banco, exibindo os registros..
+
+Após, uma tela de cadastro ou edição, que é reaproveitável, que recebe um objeto via parâmetro de rota, ele preenche os campos e vira um UPDATE.
+
+A tela de detalhes, uma interface exclusiva para leitura segura dos dados.
+
+Com tudo isso é, é mais utilizado o DropdownButton, para mexer com os relacionamentos entre tabelas..
+
+Na visão do usuário, o sistema exibe apenas uma String.
+Internamente, o sistema armazena o objeto estado completo, garantindo que a chave seja capturada corretamente para a persistência..
+--------------------------------------------------------------------------------
+
+pq escrever tudo na mão?
+pq é mais eficiente, pois ganha noção técnica e reduz probabilidade de bugs, alto acoplamento 
+—------------------------------------------------------------------------------------------------------------------------
+Persistência diretamente nas telas
+Em um primeiro momento, é possível implementar a persistência de dados diretamente nas telas de aplicação. Nesse caso, cada tela seria responsável por realizar as conexões com o banco de dados e executar comandos SQL e realizar operações como inserção, consulta, alteração e exclusão de informações.
+
+Além dessas funções, a própria tela também continua responsável pela interface gráfica, navegação entre páginas e interação com o usuário. Essa abordagem pode funcionar em aplicações pequenas, porém se torna problemática conforme o sistema cresce.
+
+Quando cada tela controla sua própria persistência, ocorre repetição de código em diferentes partes do sistema.Sempre que uma nova funcionalidade ou cadastro é criado, torna-se necessário  reescrever comando de conexão e operações de banco de dados , trazendo duplicidade para o sistema e tornando-o menos eficiente.
+
+—------------------------------------------------------------------------------------------------------------------------
+Código com classe de conexão
+Podemos  utilizar uma classe para conexão nela vamos centralizar o que antes apareciam em várias telas, ela vai centralizar informações que se repetem, como por exemplo, nome do banco, caminho, abertura, versão do banco
+Podemos melhorar mais isso com o DAO, onde ao invés de conectarmos com o SQL direto  vamos conectar a um DAO, isso centraliza o SQL, vamos ter menos repetições nas telas, o que resulta em telas mais simples e com manutenções mais fáceis
+Para melhorarmos ainda mais isso, podemos fazer um MVC, model, view e controller, nele podemos organizar melhor as telas:
+model: Representa os dado
+view: Mostra dados, recebe ações do user
+Controller: é responsável pela gestão, como um maestro ele chama o DAO 
+Podemos ainda sim melhorar isso com uma interface entre o DAO e o controller
+uma interface serve para definir um contrato entre ambos, como o DAO é uma classe concreta, nosso controller fica refém disso, com a Interface invertemos isso, agora nosso controller pede o que precisa, não o que tem
+
+
+
+
+
+------------------------------------------------------------------------------------------------
+
+Código com Model
+
+A introdução ao Models, como nas classes Estado e Cidade substitui o uso frágil de Maps soltos, garantindo que o código acesse propriedades de forma clara e segura. A tela lida exclusivamente com os objetos, enquanto o DAO assume o papel de tradutor central entre o aplicativo e o banco de dados. No salvamento, a tela envia o Model para o DAO, que o converte um Map, já na consulta o fluxo inverte, onde o banco devolve um Map e O DAO reconstrói  um Model.
+Fazendo com que o uso de Models padronize toda a circulação de informações, deixando a arquitetura muito mais robusta e fácil de se manter..
+--------------------------------------------------------------------------------------------------------
+Durante o período deste mês, o principal objetivo prático é desenvolver a parte de persistência de dados em um projeto flutter, precisando ser entregue como pré requisito:
+Quatro cadastros funcionando, sendo 2 CRUD simples e 2 CRUD com associação
+Operações de CRUD (create, read, update, delete)
+Classe de conexão com o banco de dados
+DAO simples
+DAO com associação
+Mapeamento manual entre objetos e tabelas 
+
+Os critérios de avaliação vão ser:
+A implementação prática dos cadastros funcionando.
+Code review do DAO com associação, compreendendo alguns tópicos como: a entidade principal, entidade associada, relacionamento entre elas, uso de chave estrangeira, consulta com associação, mapeamento dos dados retornados e a responsabilidade do DAO.
+Vídeo da classe de conexão, utilizado para verificar o domínio sem qualquer tipo de consulta. Será observado a escrita em sequência da conexão, legibilidade do código, indentação adequada, explicação da estrutura geral e a demonstração da compreensão do papel da conexão.
+
+Datas importantes:
+25/05/2026 -> Code Review, será cobrado somente o DAO com associação aplicado ao projeto, na parte de consulta caso utilizado frommap ou tojson no modelodto é necessário escrever e explicar o código
+a questão sera aberta e devemos explicar o que sabemos sobre a implementação
+01/06/2026 -> Vídeo da classe de conexão
+Nesse caso vamos escrevem a classe e explicar o funcionamento do código, estudar e levar duvidas ao professor(via email ou chat)
